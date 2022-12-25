@@ -1,12 +1,13 @@
 package book.store.system;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 /**
  *
  * @author MJ
  */
-public class Splash extends JFrame {
+public class Splash extends JFrame implements ActionListener {
     
     Splash(){
         
@@ -21,14 +22,21 @@ public class Splash extends JFrame {
         
         JLabel heading = new JLabel("Athena Reads");
         JLabel img = new JLabel(i3);
-        JButton b1 = new JButton("Enter the Store");
+        JButton lgbtn = new JButton("Login");
+        JButton regbtn = new JButton("Register");
         
         
         heading.setBounds(80, 30, 1200, 60);
         img.setBounds(50, 100, 1050, 500);
-        b1.setBounds(400,400,300,70);
-        b1.setForeground(Color.BLACK);
-        b1.setBackground(Color.WHITE);
+        lgbtn.setBounds(300,400,200,70);
+        lgbtn.setForeground(Color.BLACK);
+        lgbtn.setBackground(Color.WHITE);
+        lgbtn.addActionListener(this);
+
+        regbtn.setBounds(500,400,200,70);
+        regbtn.setForeground(Color.BLACK);
+        regbtn.setBackground(Color.WHITE);
+        regbtn.addActionListener(this);
         
         
         heading.setFont(h1);
@@ -36,7 +44,8 @@ public class Splash extends JFrame {
        
         add(heading);
         add(img);
-        img.add(b1);
+        img.add(lgbtn);
+        img.add(regbtn);
        
         
         
@@ -49,6 +58,12 @@ public class Splash extends JFrame {
         
         
     
+    }
+
+    public void actionPerformed(ActionEvent ae){
+    setVisible(false);
+    new LoginScreen();
+
     }
     
     public static void main(String args[]){

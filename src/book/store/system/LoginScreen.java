@@ -5,12 +5,14 @@
 package book.store.system;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
 
-/**
- *
- * @author MJ
- */
-public class LoginScreen extends JFrame {
+
+
+public class LoginScreen extends JFrame implements ActionListener {
+
+    JTextField unamet, pwdt;
     
     LoginScreen(){
         
@@ -36,12 +38,12 @@ public class LoginScreen extends JFrame {
         pwdl.setFont(lbls);
         add(pwdl);
         
-        JTextField unamet = new JTextField("Username");
+        unamet = new JTextField("Username");
         unamet.setBounds(200, 140, 350, 60);
         unamet.setFont(lbls);
         add(unamet);
         
-        JTextField pwdt = new JTextField("****");
+        pwdt = new JTextField("****");
         pwdt.setBounds(200, 200, 350, 60);
         pwdt.setFont(lbls);
         add(pwdt);
@@ -50,6 +52,7 @@ public class LoginScreen extends JFrame {
         lgnbtn.setBounds(250, 300, 150, 50);
         lgnbtn.setBackground(Color.BLACK);
         lgnbtn.setForeground(Color.WHITE);
+        lgnbtn.addActionListener(this);
         add(lgnbtn);
         
         
@@ -59,6 +62,37 @@ public class LoginScreen extends JFrame {
         setLocation(500, 500);
         setVisible(true);
     
+    }
+
+    public void actionPerformed(ActionEvent ae) {
+
+        try{
+
+            String username = unamet.getText();
+            String password = pwdt.getText();
+
+            String query = "select * from login where username = '" + username +"'and password = '" + password + "';";
+
+            conn c = new conn();
+
+            ResultSet rs = c.s.executeQuery(query);
+
+            if(rs.next()){
+                setVisible(false);
+                new Home();
+            }else {
+                JOptionPane.showMessageDialog(null, "Invalid username or password");
+                setVisible(false);
+                
+            }
+
+
+        }catch(Exception e){
+
+            e.printStackTrace();
+
+
+        }
     }
     
     public static void main(String args[]){

@@ -45,6 +45,11 @@ public class Sell extends JFrame {
         authl.setBounds(80, 320, 1200, 60);
         authl.setFont(lbls);
         add(authl);
+
+        JLabel pricel = new JLabel("Price:");
+        pricel.setBounds(80, 380, 1200, 60);
+        pricel.setFont(lbls);
+        add(pricel);
         
         JTextField bnamet = new JTextField("e.g. DSA");
         bnamet.setBounds(280, 140, 350, 60);
@@ -65,9 +70,14 @@ public class Sell extends JFrame {
         autht.setBounds(280, 320, 350, 60);
         autht.setFont(lbls);
         add(autht);
+
+        JTextField pricet = new JTextField("$$$");
+        pricet.setBounds(280, 380, 350, 60);
+        pricet.setFont(lbls);
+        add(pricet);
         
         JButton sellbtn = new JButton("Sell");
-        sellbtn.setBounds(280, 400, 150, 50);
+        sellbtn.setBounds(280, 450, 150, 50);
         sellbtn.setBackground(Color.BLACK);
         sellbtn.setForeground(Color.WHITE);
         add(sellbtn);
