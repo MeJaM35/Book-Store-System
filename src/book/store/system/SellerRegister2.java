@@ -216,8 +216,43 @@ public class SellerRegister2 extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        new SellerLogin().setVisible(true);
-        setVisible(false);
+        try{
+
+            String pan_no = jTextField1.getText();
+            String aadhar = jTextField2.getText();
+            String phone = jTextField3.getText();
+            String bank = (String) jComboBox1.getSelectedItem();
+            String ifsc_code = jTextField4.getText();
+            String address = jTextArea1.getText();
+            
+            
+            
+            String email = jTextField4.getText();
+            
+
+            String query = "insert into Seller values('"+ pan_no +"', '"+ aadhar +"', '"+ phone +"', '"+ bank +"', '"+ ifsc_code +" ', '"+ address +"');";
+
+            conn c = new conn();
+            
+            
+
+                c.s.executeUpdate(query);
+                setVisible(false);
+                new SellerLogin().setVisible(true);
+               
+                
+
+            
+                
+           
+
+
+        }catch(Exception e){
+
+            e.printStackTrace();
+
+
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -221,8 +221,39 @@ public class SellForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new SellerDashBoard().setVisible(true);
+        try{
+
+            String bk_name = jTextField1.getText();
+            String author = jTextField2.getText();
+            String sub = jTextField3.getText();
+            int price = Integer.parseInt(jTextField4.getText());
+            String desct = jTextArea1.getText();
+            
+            
+
+            String query = "insert into Book values('"+ bk_name +"', '"+ author +"', '"+ sub +"', '"+ price +"', '"+ desct +"');";
+
+            conn c = new conn();
+            
+            
+
+                c.s.executeUpdate(query);
+                setVisible(false);
+                new SellerDashBoard().setVisible(true);
+               
+                
+
+            
+                
+           
+
+
+        }catch(Exception e){
+
+            e.printStackTrace();
+
+
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -284,4 +315,8 @@ public class SellForm extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
+
+    private String ParseInt(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
